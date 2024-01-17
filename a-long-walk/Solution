@@ -1,0 +1,59 @@
+f = open("input.txt", "r")
+
+forest = f.read()
+
+
+steps = 0
+personIndex = 1
+# 141
+goingRight = False
+goingLeft = False
+goingDown = False
+goingUp = False
+
+while (personIndex < len(forest) - 2):
+    #case 1 where person goes right
+    if(forest[personIndex + 1] == '.' and forest[personIndex -1] == '#' and not goingLeft):
+        goingRight = True
+        goingLeft = False
+        goingDown = False
+        goingUp = False
+
+        
+        steps += 1
+        personIndex += 1
+    #case 2 where person goes left
+    elif(forest[personIndex + 1] == '#' and forest[personIndex - 1] == '.' and not goingRight):
+        goingRight = False
+        goingLeft = True
+        goingDown = False
+        goingUp = False
+
+        steps += 1 
+        personIndex -= 1
+    
+    #case 3 where person goes down
+    elif(forest[personIndex + 1] == '#' and forest[personIndex - 1] == '#' and not goingUp):
+        goingRight = False
+        goingLeft = False
+        goingDown = True
+        goingUp = False
+
+        steps += 1
+        personIndex += 141 
+        
+    #case 4 where person goes up 
+    elif(forest[personIndex + 1] == '#' and forest[personIndex - 1] == '#' and not goingDown):
+        goingRight = False
+        goingLeft = False
+        goingDown = True
+        goingUp = False
+
+        steps += 1
+        personIndex -= 141 
+
+    #case 5 where person ??
+    elif(forest[personIndex + 1] == '>' and forest[personIndex - 1] == '#' and not goingDown):
+        
+
+    
